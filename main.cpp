@@ -60,7 +60,36 @@ int main() {
     //create vector to store Movie objects
     vector<Movie> movies;
 
+    // read movies
+    for (int i = 0; i < 4; i++) {
+        // temp movie object
+        Movie tempMovie;
 
+        string title;
+        int yearReleased;
+        string screenWriter;
+
+        // read data from file
+        getline(inputFile, title);
+        inputFile >> yearReleased;
+        inputFile.ignore(); // ignore the newline character after the year
+        getline(inputFile, screenWriter);
+
+        // put data into temp movie object
+        tempMovie.setTitle(title);
+        tempMovie.setYearReleased(yearReleased);
+        tempMovie.setScreenWriter(screenWriter);
+
+        //append temp movie object to vector
+        movies.push_back(tempMovie);
+    }
+
+    inputFile.close();
+
+    //output all movies
+    for (int i = 0; i < movies.size(); i++) {
+        movies[i].print();
+    }
 
     return 0;
 }
